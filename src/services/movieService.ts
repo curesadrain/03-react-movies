@@ -5,7 +5,7 @@ interface MoviesHTTPResponse {
   results: Movie[];
 }
 
-async function fetchMovies(searchQuery: string) {
+async function fetchMovies(searchQuery: string): Promise<Movie[]> {
   const apiToken = import.meta.env.VITE_TMDB_TOKEN;
   const response = await axios.get<MoviesHTTPResponse>(
     "https://api.themoviedb.org/3/search/movie",
@@ -19,7 +19,7 @@ async function fetchMovies(searchQuery: string) {
       },
     },
   );
-  return response;
+  return response.data.results;
 }
 
 export default fetchMovies;

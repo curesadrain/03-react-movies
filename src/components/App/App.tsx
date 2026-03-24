@@ -23,11 +23,11 @@ function App() {
 
     try {
       const response = await fetchMovies(searchQuary);
-      if (response.data.results.length === 0) {
+      if (response.length === 0) {
         toast.error("No movies found for your request.");
         return;
       }
-      setMoviesList(response.data.results);
+      setMoviesList(response);
     } catch {
       setIsError(true);
     } finally {
@@ -38,11 +38,13 @@ function App() {
   const handleSelect = (movie: Movie) => {
     setSelectedMovie(movie);
     setIsModalOpen(true);
+    document.body.style.overflow = "hidden";
   };
 
   const handleClose = () => {
     setSelectedMovie(null);
     setIsModalOpen(false);
+    document.body.style.overflow = "";
   };
 
   return (
