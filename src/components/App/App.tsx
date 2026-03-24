@@ -38,13 +38,11 @@ function App() {
   const handleSelect = (movie: Movie) => {
     setSelectedMovie(movie);
     setIsModalOpen(true);
-    document.body.style.overflow = "hidden";
   };
 
   const handleClose = () => {
     setSelectedMovie(null);
     setIsModalOpen(false);
-    document.body.style.overflow = "";
   };
 
   return (
