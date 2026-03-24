@@ -4,6 +4,5 @@ import babel from "@rolldown/plugin-babel";
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/03-react-movies/",
   plugins: [react(), babel({ presets: [reactCompilerPreset()] })],
 });
