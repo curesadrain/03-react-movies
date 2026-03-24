@@ -16,6 +16,8 @@ function MovieModal({ movie, onClose }: MovieModalProps) {
   };
 
   useEffect(() => {
+    document.body.style.overflow = "hidden";
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         onClose();
@@ -26,8 +28,9 @@ function MovieModal({ movie, onClose }: MovieModalProps) {
 
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
     };
-  });
+  }, [onClose]);
 
   return createPortal(
     <div
